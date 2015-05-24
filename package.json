@@ -1,5 +1,5 @@
 {
-    "name": "cordova-nodewebkit",
+    "name": "cordova-nw",
     "version": "3.7.0-dev",
     "description": "cordova-nodewebkit release",
     "main": "bin/create",
