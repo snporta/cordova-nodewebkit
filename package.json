@@ -1,0 +1,37 @@
+{
+    "name": "cordova-nodewebkit",
+    "version": "3.7.0-dev",
+    "description": "cordova-nodewebkit release",
+    "main": "bin/create",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [
+        "cordova",
+        "node-webkit",
+        "apache"
+    ],
+    "dependencies": {
+        "shelljs": "^0.1.4",
+        "adm-zip": "0.4.4",
+        "q": "1.0.1",
+        "nopt": "~3",
+        "mime": "1.2.11"
+    },
+    "bundledDependencies": [
+        "shelljs",
+        "adm-zip",
+        "q",
+        "nopt",
+        "mime"
+    ],
+    "author": "Apache Software Foundation",
+    "contributors": [
+        {
+            "name": "Santiago Porta",
+            "email": "santiago.porta@drwoft.com"
+        }
+    ],
+    "license": "Apache Version 2.0"
+}
