@@ -25,8 +25,8 @@ var path = require('path'),
     shjs = require('shelljs'),
     zip = require('adm-zip'),
     check_reqs = require('./check_reqs'),
-    platformWwwDir          = path.join('platforms', 'nwjs', 'www'),
-    platformBuildDir        = path.join('platforms', 'nwjs', 'build'),
+    platformWwwDir          = path.join('platforms', 'nw', 'www'),
+    platformBuildDir        = path.join('platforms', 'nw', 'build'),
     packageFile             = path.join(platformBuildDir, 'package.nw');
 
 /**
@@ -47,7 +47,7 @@ exports.buildProject = function(){
         fs.mkdirSync(platformBuildDir);
     }
 	
-	shjs.cp('-r', path.join('platforms', 'nwjs', 'package.json'), platformWwwDir);	
+	shjs.cp('-r', path.join('platforms', 'nw', 'package.json'), platformWwwDir);	
 	
     // add the project to a zipfile
     var zipFile = zip();

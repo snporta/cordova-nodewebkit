@@ -23,7 +23,7 @@ var fs = require('fs'),
     shjs = require('shelljs'),
     path = require('path'),
     check_reqs = require('./check_reqs'),
-    platformBuildDir = path.join('platforms', 'nwjs', 'build');
+    platformBuildDir = path.join('platforms', 'nw', 'build');
 
 exports.cleanProject = function(){
 
