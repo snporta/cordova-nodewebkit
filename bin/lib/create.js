@@ -50,7 +50,7 @@ exports.createProject = function(project_path,package_name,project_name){
     //copy template directory
     shjs.cp('-r', path.join(ROOT, 'bin', 'templates', 'project', 'www'), project_path);
 	
-	shjs.cp('-r', path.join(ROOT, 'bin', 'templates', 'project', 'package.json'), project_path );
+	shjs.cp('-r', path.join(ROOT, 'bin', 'templates', 'project', 'package.json'), project_path + '/platform_www');
     
 	//create cordova/lib if it does not exist yet
     if (!fs.existsSync(path.join(project_path,'cordova', 'lib'))) {

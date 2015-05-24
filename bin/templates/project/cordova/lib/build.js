@@ -45,9 +45,7 @@ exports.buildProject = function(){
 
     if (!fs.existsSync(platformBuildDir)) {
         fs.mkdirSync(platformBuildDir);
-    }
-	
-	shjs.cp('-r', path.join('platforms', 'nw', 'package.json'), platformWwwDir);	
+    }	
 	
     // add the project to a zipfile
     var zipFile = zip();
