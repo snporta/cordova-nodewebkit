@@ -9,7 +9,7 @@
         "width": 800,
         "height": 600,
         "toolbar": true,
-        "show_in_taskbar": false,
+        "show_in_taskbar": true,
         "as_desktop": true,
         "position": "center",
         "frame": true,

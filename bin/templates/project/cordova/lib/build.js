@@ -48,9 +48,19 @@ exports.buildProject = function(){
     }	
 	
     // add the project to a zipfile
-    var zipFile = zip();
+    /*var zipFile = zip();
     zipFile.addLocalFolder(platformWwwDir, '.');
-    zipFile.writeZip(packageFile);
+    zipFile.writeZip(packageFile);*/
+	
+	var archiver = require('archiver');
+
+	var output = fs.createWriteStream(packageFile);
+	var archive = archiver('zip');
+
+	archive.directory(platformWwwDir,false);
+	archive.pipe(output);
+	archive.finalize();
+	
 
     console.log('NW.JS packaged app built in '+ packageFile);
 
