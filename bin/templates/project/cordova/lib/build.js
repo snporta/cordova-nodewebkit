@@ -64,10 +64,7 @@ exports.buildProject = function(){
 		  throw err;
 		}   	
 	});
-
-    
-
-    
+  
 };
 
 module.exports.help = function() {
