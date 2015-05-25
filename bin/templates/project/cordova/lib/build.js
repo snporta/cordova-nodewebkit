@@ -21,14 +21,13 @@
  
 var path = require('path'),
     fs = require('fs'),
+	zip = require('adm-zip'),
     clean = require('./clean'),
-    shjs = require('shelljs'),
-    zip = require('adm-zip'),
+    shjs = require('shelljs'),    
     check_reqs = require('./check_reqs'),
     platformWwwDir          = path.join('platforms', 'nw', 'www'),
     platformBuildDir        = path.join('platforms', 'nw', 'build'),
     packageFile             = path.join(platformBuildDir, 'package.nw');
-
 /**
  * buildProject
  *   Creates a zip file int platform/build folder
@@ -47,14 +46,28 @@ exports.buildProject = function(){
         fs.mkdirSync(platformBuildDir);
     }	
 	
-    // add the project to a zipfile
-    var zipFile = zip();
-    zipFile.addLocalFolder(platformWwwDir, '.');
-    zipFile.writeZip(packageFile);
+	var archiver = require('archiver');
+	var zipArchive = archiver('zip');
+	var output = fs.createWriteStream(packageFile);
 
-    console.log('NW.JS packaged app built in '+ packageFile);
 
-    process.exit(0);
+	output.on('close', function() {
+		console.log('NW.JS packaged app built in '+ packageFile);
+		process.exit(0);
+	});
+
+	zipArchive.directory(platformWwwDir,false);
+	zipArchive.pipe(output);
+
+	zipArchive.finalize(function(err, bytes) {
+		if(err) {
+		  throw err;
+		}   	
+	});
+
+    
+
+    
 };
 
 module.exports.help = function() {
