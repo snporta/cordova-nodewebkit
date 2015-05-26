@@ -34,35 +34,16 @@ function start(argv) {
     var args  = nopt({'help': Boolean, 'target': String, 'port': Number}, {'help': ['/?', '-h', 'help', '-help', '/help']}, argv);
     if(args.help) {
         help();
-    }
-
-    // defaults
-    args.port = args.port || 8000;
-    args.target = args.target || "chrome";
-
-    var root = path.join(__dirname, '../'),
-        configFile = path.resolve(path.join(root, 'config.xml')),
-        configXML = fs.readFileSync(configFile, 'utf8'),
-        sourceFile = /<content[\s]+?src\s*=\s*"(.*?)"/i.exec(configXML),
-        rootPlatform = path.resolve(path.join(root, 'www'));
-
-    run.runHttpServer(rootPlatform, args.port).then(function (urlRoot) {
-      var projectUrl = url.resolve(urlRoot, sourceFile ? sourceFile[1] : 'index.html');
-
-      console.log('Static file server running @ ' + projectUrl + '\nCTRL + C to shut down');
-
-      return run.runBrowser(args.target, projectUrl);
-    }).done();
+    }    
+    return run.runNw(args.path_nw,args.name_binary);
 }
 
 function help() {
-    console.log("\nUsage: run [ --target=<browser> ] [ --port=<number> ]");
-    console.log("    --target=<browser> : Launches the specified browser. Chrome is default.");
-    console.log("    --port=<number>    : Http server uses specified port numner.");
+    console.log("\nUsage: run [ --path_nw=<Path node-webkit> ]");
+    console.log("    --path_nw=<browser> : Launches the specified node-webkit path. node webkit in path is default.");    
     console.log("Examples:");
     console.log("    run");
-    console.log("    run -- --target=ie");
-    console.log("    run -- --target=chrome --port=8000");
+    console.log("    run -- --path_nw=c:/node-webkit");    
     console.log("");
     process.exit(0);
 };
